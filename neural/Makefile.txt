@@ -1,0 +1,60 @@
+##########################################################################
+
+# OpenCV Teaching Examples
+
+# Author : Toby Breckon, toby.breckon@cranfield.ac.uk
+
+# Copyright (c) 2006 School of Engineering, Cranfield University
+# License : LGPL - http://www.gnu.org/licenses/lgpl.html
+
+##########################################################################
+
+# opencv setup using pkg-config
+
+OPENCV_INCLUDE=`pkg-config opencv --cflags`
+OPENCV_LIB=`pkg-config opencv --libs`
+
+# general compiler setup
+
+CC=g++
+CC_OPTS=-O2 -Wall
+
+##########################################################################
+
+EXAMPLES=decisiontree neuralnetwork svm
+
+##########################################################################
+
+all:
+	make $(EXAMPLES)
+
+##########################################################################
+
+# Example 1 - decision tree
+
+decisiontree: decisiontree.cpp $(OBJS) $(HEADERS)
+	$(CC) $(CC_OPTS) $(CFLAGS) $(OPENCV_INCLUDE) $(OPENCV_LIB) \
+	decisiontree.cpp $(OBJS) -o decisiontree
+
+##########################################################################
+
+# Example 2 - neural network
+
+neuralnetwork: neuralnetwork.cpp $(OBJS) $(HEADERS)
+	$(CC) $(CC_OPTS) $(CFLAGS) $(OPENCV_INCLUDE) $(OPENCV_LIB) \
+	neuralnetwork.cpp $(OBJS) -o neuralnetwork
+
+##########################################################################
+
+# Example 3 - SVM
+
+svm: svm.cpp $(OBJS) $(HEADERS)
+	$(CC) $(CC_OPTS) $(CFLAGS) $(OPENCV_INCLUDE) $(OPENCV_LIB) \
+	svm.cpp $(OBJS) -o svm
+
+##########################################################################
+
+clean:
+	rm -f *~ $(EXAMPLES)
+
+##########################################################################

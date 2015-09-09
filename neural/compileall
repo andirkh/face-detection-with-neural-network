@@ -1,0 +1,3 @@
+#!/bin/bash
+
+g++ -W -Wall neuralnetwork.cpp -o zxc -I/opt/local/include -L/opt/local/lib `pkg-config opencv --libs`

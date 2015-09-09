@@ -1,0 +1,3 @@
+#!/bin/bash
+
+g++ -W -Wall main.cpp Dataman.cpp bpnet.cpp -o widexecutable -I/opt/local/include -L/opt/local/lib `pkg-config opencv --libs`
